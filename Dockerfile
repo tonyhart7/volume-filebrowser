@@ -1,4 +1,4 @@
-FROM caddy:2.6.4-alpine
+FROM caddy:latest
 
 RUN apk add --no-cache pwgen
 
@@ -6,8 +6,6 @@ WORKDIR /app
 
 COPY template.caddyfile ./
 
-COPY start.sh ./
-
-RUN chmod +x start.sh
+COPY --chmod=755 start.sh ./
 
 CMD ["sh", "start.sh"]
